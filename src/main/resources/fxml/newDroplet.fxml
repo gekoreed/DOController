@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0"
+      prefWidth="410.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="digitalOcean.controller.CreateDropletController">
+    <children>
+        <Label layoutX="12.0" layoutY="24.0" text="Droplet name:"/>
+        <TextField fx:id="newDropletName" layoutX="115.0" layoutY="20.0" prefHeight="27.0" prefWidth="252.0"/>
+        <Label layoutX="52.0" layoutY="64.0" text="Region:"/>
+        <ComboBox fx:id="region" layoutX="115.0" layoutY="60.0" prefHeight="27.0" prefWidth="252.0"/>
+        <Label layoutX="68.0" layoutY="104.0" text="Size:"/>
+        <ComboBox fx:id="dropletSize" layoutX="115.0" layoutY="100.0" prefHeight="27.0" prefWidth="252.0"/>
+        <ComboBox fx:id="dropletImage" layoutX="115.0" layoutY="140.0" prefHeight="27.0" prefWidth="252.0"/>
+        <Label layoutX="57.0" layoutY="144.0" prefHeight="18.0" prefWidth="46.0" text="Image:"/>
+        <Label layoutX="36.0" layoutY="184.0" text="SSH keys:"/>
+        <TextField fx:id="sskKeys" layoutX="115.0" layoutY="180.0" prefHeight="27.0" prefWidth="177.0"/>
+        <Label layoutX="289.0" layoutY="224.0" text="BackUp: "/>
+        <CheckBox fx:id="backup" layoutX="349.0" layoutY="224.0" mnemonicParsing="false"/>
+        <CheckBox fx:id="ip6" layoutX="349.0" layoutY="264.0" mnemonicParsing="false"/>
+        <Label layoutX="305.0" layoutY="264.0" text="IP v6: "/>
+        <Button layoutX="115.0" layoutY="298.0" mnemonicParsing="false" onAction="#createDropletSubmit"
+                prefHeight="27.0" prefWidth="148.0" text="Create Droplet"/>
+        <Label fx:id="error" layoutX="115.0" layoutY="337.0" text="Something went wrong" textFill="#d01818"/>
+        <CheckBox fx:id="saveSsh" layoutX="349.0" layoutY="184.0" mnemonicParsing="false"/>
+        <Label layoutX="307.0" layoutY="184.0" text="Save:"/>
+    </children>
+</Pane>

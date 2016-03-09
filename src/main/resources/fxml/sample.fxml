@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="723.0"
+      prefWidth="867.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="digitalOcean.controller.Controller">
+    <children>
+        <TabPane fx:id="tabPane" layoutY="25.0" prefHeight="349.0" prefWidth="630.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="General Info">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="630.0">
+                            <children>
+                                <Button fx:id="refreshButton" layoutX="14.0" layoutY="16.0" mnemonicParsing="false"
+                                        onAction="#refreshData" text="refresh"/>
+                                <Label fx:id="label" layoutX="223.0" layoutY="21.0" text="now"/>
+                                <Button layoutX="327.0" layoutY="16.0" mnemonicParsing="false"
+                                        onAction="#rebootTheServer" prefHeight="50.0" prefWidth="111.0" text="Reboot">
+                                    <tooltip>
+                                        <Tooltip text="Will Reboot the selected droplet"/>
+                                    </tooltip>
+                                </Button>
+                                <Label fx:id="dropletStatus" layoutX="90.0" layoutY="95.0" text="DropletStatus"/>
+                                <Label fx:id="dropletName" layoutX="90.0" layoutY="66.0" text="Droplet name"/>
+                                <Label fx:id="dropletIP" layoutX="90.0" layoutY="124.0" text="Droplet ip:"/>
+                                <Button layoutX="455.0" layoutY="16.0" mnemonicParsing="false"
+                                        onAction="#powerOffButtonPressed" prefHeight="50.0" prefWidth="111.0"
+                                        text="Power OFF">
+                                    <tooltip>
+                                        <Tooltip text="Will turn off your droplet"/>
+                                    </tooltip>
+                                </Button>
+                                <Button layoutX="455.0" layoutY="75.0" mnemonicParsing="false"
+                                        onAction="#powerONButtonPressed" prefHeight="50.0" prefWidth="111.0"
+                                        text="Power ON"/>
+                                <Button id="copyButton" fx:id="copyButton2" layoutX="14.0" layoutY="120.0"
+                                        mnemonicParsing="false" onAction="#copyIP" prefHeight="27.0" prefWidth="62.0"
+                                        text="copy">
+                                    <tooltip>
+                                        <Tooltip text="copy"/>
+                                    </tooltip>
+                                </Button>
+                                <Button fx:id="copyButton" layoutX="14.0" layoutY="62.0" mnemonicParsing="false"
+                                        onAction="#copyName" prefHeight="27.0" prefWidth="62.0" text="copy">
+                                    <tooltip>
+                                        <Tooltip text="copy"/>
+                                    </tooltip>
+                                </Button>
+                                <Button layoutX="125.0" layoutY="220.0" mnemonicParsing="false" onAction="#saveToFile"
+                                        text="Save to file"/>
+                                <Button layoutX="14.0" layoutY="220.0" mnemonicParsing="false" onAction="#logOut"
+                                        prefHeight="27.0" prefWidth="87.0" text="Log Out"/>
+                                <Button layoutX="327.0" layoutY="75.0" mnemonicParsing="false" onAction="#renameDroplet"
+                                        prefHeight="50.0" prefWidth="111.0" text="Rename"/>
+                                <Separator layoutX="626.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="487.0"
+                                           prefWidth="8.0"/>
+                                <Button layoutX="491.0" layoutY="220.0" mnemonicParsing="false"
+                                        onAction="#deleteDroplet" prefHeight="29.0" prefWidth="75.0" text="Delete"/>
+                                <Button layoutX="491.0" layoutY="183.0" mnemonicParsing="false"
+                                        onAction="#createDroplet" prefHeight="29.0" prefWidth="75.0" text="Create"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Additional Info">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button layoutX="445.0" layoutY="25.0" mnemonicParsing="false" onAction="#saveNewApiKey"
+                                        text="Save"/>
+                                <TextField fx:id="apiKeyText" layoutX="186.0" layoutY="25.0" prefHeight="26.0"
+                                           prefWidth="232.0"/>
+                                <Label layoutX="63.0" layoutY="30.0" text="ApiKey:"/>
+                                <Separator layoutX="14.0" layoutY="60.0" prefHeight="14.0" prefWidth="566.0"/>
+                                <TextArea fx:id="loggerText" layoutX="37.0" layoutY="77.0" prefHeight="178.0"
+                                          prefWidth="530.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Terminal">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextArea fx:id="console" layoutX="8.0" layoutY="7.0" prefHeight="230.0"
+                                          prefWidth="613.0"/>
+                                <Button layoutX="414.0" layoutY="245.0" mnemonicParsing="false" onAction="#runCommand"
+                                        onKeyPressed="#runCommand" text="run"/>
+                                <TextField fx:id="commandText" layoutX="8.0" layoutY="245.0" onAction="#runCommand"
+                                           prefHeight="26.0" prefWidth="400.0"/>
+                                <TextArea fx:id="consolehidden" layoutY="307.0" prefHeight="167.0" prefWidth="584.0"
+                                          visible="false"/>
+                                <PasswordField fx:id="pwdField" layoutX="458.0" layoutY="281.0"
+                                               onKeyReleased="#cancelSSH" prefHeight="27.0" prefWidth="163.0"
+                                               promptText="password"/>
+                                <TextField fx:id="sshLogin" layoutX="458.0" layoutY="245.0" onKeyReleased="#cancelSSH"
+                                           prefHeight="27.0" prefWidth="163.0" text="root"/>
+                                <Button fx:id="presetsButton" layoutX="14.0" layoutY="281.0" mnemonicParsing="false"
+                                        onAction="#showPresetsForTerminal" prefWidth="124.0" text="Presets"/>
+                                <ListView fx:id="presets" layoutX="8.0" layoutY="7.0" prefHeight="237.9998779296875"
+                                          prefWidth="613.0" visible="false"/>
+                                <Button layoutX="146.0" layoutY="281.0" mnemonicParsing="false" onAction="#newPreset"
+                                        prefWidth="124.0" text="new preset"/>
+                                <Button layoutX="277.0" layoutY="281.0" mnemonicParsing="false" onAction="#deletePreset"
+                                        prefHeight="26.0" prefWidth="124.0" text="Delete preset"/>
+                                <Circle fx:id="sshStatus" fill="#15a412" layoutX="429.0" layoutY="293.0" radius="8.0"
+                                        stroke="#00000032" strokeType="INSIDE"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Activity">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="610.0">
+                            <children>
+                                <AreaChart fx:id="activitychart" layoutX="28.0" layoutY="52.0" prefHeight="268.0"
+                                           prefWidth="559.0">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </AreaChart>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Props">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="52.0" layoutY="44.0" text="Autorization type:"/>
+                                <ComboBox fx:id="authTypeCombo" layoutX="197.0" layoutY="40.0" prefWidth="150.0"
+                                          promptText="test&#10;tesd&#10;"/>
+                                <Label fx:id="RSAKeyPath" layoutX="52.0" layoutY="84.0" text="RSA key path:"/>
+                                <Button layoutX="52.0" layoutY="114.0" mnemonicParsing="false"
+                                        onAction="#updateRSAKeyPath" text="Change RSA path"/>
+                                <CheckBox fx:id="autoUpdate" layoutX="55.0" layoutY="166.0" mnemonicParsing="false"
+                                          onAction="#autoUpdateAction" text="Auto Update"/>
+                                <Slider fx:id="slider" blockIncrement="5.0" layoutX="175.0" layoutY="168.0"
+                                        majorTickUnit="5.0" max="60.0" min="5.0" minorTickCount="1" prefHeight="16.0"
+                                        prefWidth="443.0" showTickLabels="true" showTickMarks="true"
+                                        snapToTicks="true"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <ListView fx:id="dropletList" layoutX="640.0" layoutY="60.0" prefHeight="268.0" prefWidth="190.0"/>
+        <Label layoutX="639.0" layoutY="36.0" text="Droplets you have:"/>
+        <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="29.0" prefWidth="867.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#refreshData" text="Refresh"/>
+                        <MenuItem mnemonicParsing="false" onAction="#saveToFile" text="Save To File"/>
+                        <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <PieChart fx:id="upTimeChart" layoutX="547.0" layoutY="422.0" prefHeight="294.0" prefWidth="320.0"/>
+        <AreaChart fx:id="areachart" layoutX="8.0" layoutY="374.0" prefHeight="358.0" prefWidth="496.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT"/>
+            </yAxis>
+        </AreaChart>
+        <Label fx:id="CPULoadFactor" layoutX="566.0" layoutY="385.0" prefHeight="16.0" prefWidth="190.0"
+               text="CPU Load"/>
+        <Label fx:id="memLabel" layoutX="566.0" layoutY="411.0" prefHeight="16.0" prefWidth="190.0" text="Memory free"/>
+        <Button layoutX="758.0" layoutY="345.0" mnemonicParsing="false" onAction="#statistica"
+                onKeyPressed="#runCommand" prefHeight="27.0" prefWidth="73.0" text="update"/>
+        <Circle fx:id="statusCircle" fill="#04ff00" layoutX="821.0" layoutY="393.0" radius="8.0" stroke="#00000032"
+                strokeType="INSIDE"/>
+        <Label layoutX="758.0" layoutY="385.0" text="Status"/>
+        <Button layoutX="640.0" layoutY="345.0" mnemonicParsing="false" onAction="#SendEmailReport" prefHeight="27.0"
+                prefWidth="105.0" text="EMail report"/>
+        <Label fx:id="userNameLabel" layoutX="759.0" layoutY="36.0" textFill="#510404" textOverrun="CLIP"
+               underline="true">
+            <font>
+                <Font name="System Bold" size="13.0"/>
+            </font>
+        </Label>
+    </children>
+    <effect>
+        <ColorAdjust>
+            <input>
+                <ColorAdjust/>
+            </input>
+        </ColorAdjust>
+    </effect>
+</Pane>

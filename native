@@ -1,0 +1,3 @@
+cd /Users/gekoreed/repo/DOController;
+mvn clean;
+mvn jfx:native;

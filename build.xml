@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ButtonDemo" default="bundle" basedir=".">
+
+
+    <taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"
+             classpath="lib/appbundler-1.0.jar"/>
+
+    <target name="bundle">
+        <bundleapp outputdirectory="natives"
+                   name="DOControll"
+                   displayname="DOControll"
+                   identifier="digitalOcean.App"
+                   mainclassname="digitalOcean.App"
+                   icon="src/main/deploy/package/macosx/DOControll.icns">
+            <classpath file="target/DOControll-jar-with-dependencies.jar"/>
+        </bundleapp>
+    </target>
+
+</project>

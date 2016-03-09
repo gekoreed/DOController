@@ -1,0 +1,8 @@
+.idea/
+readyMacApp/
+natives/*
+DOController.iml
+target/
+controller.log
+JavaDoc/*
+src/main/resources/config/db.properties

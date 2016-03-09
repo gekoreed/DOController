@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0"
+      prefWidth="560.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="digitalOcean.controller.NewController">
+    <effect>
+        <ColorAdjust>
+            <input>
+                <ColorAdjust/>
+            </input>
+        </ColorAdjust>
+    </effect>
+    <children>
+        <Label layoutX="14.0" layoutY="76.0" text="Api Key:"/>
+        <TextField fx:id="newApiKey1" layoutX="86.0" layoutY="71.0" onAction="#onEnter" onKeyReleased="#checkAPI"
+                   onMouseClicked="#clearExisting" prefHeight="26.0" prefWidth="346.0"
+                   promptText="without &quot;Bearier&quot;"/>
+        <Button fx:id="okButton" layoutX="150.0" layoutY="129.0" mnemonicParsing="false" onAction="#savingNewApiKey"
+                prefHeight="36.0" prefWidth="140.0" text="Save/Register"/>
+        <Label fx:id="error" layoutX="87.0" layoutY="106.0"
+               text="Wrong Api Key. It should look something like &quot;Bearer ld3r...&quot;" textFill="#c31010"/>
+        <Button layoutX="443.0" layoutY="71.0" mnemonicParsing="false" onAction="#instructions" text="?"/>
+        <Label fx:id="used" layoutX="423.0" layoutY="137.0" text=""/>
+        <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.1328125" layoutX="449.0"
+                   layoutY="43.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="17.0"/>
+    </children>
+</Pane>

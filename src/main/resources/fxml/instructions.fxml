@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0"
+      prefWidth="448.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Text layoutX="42.0" layoutY="45.0" lineSpacing="1.0" opacity="0.96" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="1. Login to your digitalOcean account&#10;2. Go to &quot;API&quot; menu on the top of page&#10;3. Click &quot;Generate new token&quot;&#10;4. Enter desirable Token Name (you will not need it)&#10;5. Select both Read and Write&#10;6. Press &quot;Generate&quot;&#10;7. Copy your new API token"/>
+    </children>
+</Pane>

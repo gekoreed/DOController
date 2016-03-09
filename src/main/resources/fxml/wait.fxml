@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0"
+      prefWidth="493.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+        <Label layoutX="159.0" layoutY="37.0" prefHeight="39.0" prefWidth="176.0" text="loading"
+               textAlignment="CENTER" textFill="#c31010"/>
+    </children>
+</Pane>

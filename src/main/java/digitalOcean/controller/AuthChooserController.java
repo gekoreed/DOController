@@ -2,7 +2,6 @@ package digitalOcean.controller;
 
 import digitalOcean.config.APIKey;
 import digitalOcean.dao.Propertie;
-import digitalOcean.services.Coor;
 import digitalOcean.services.StageUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,7 +56,7 @@ public class AuthChooserController implements Initializable {
 
 
     private void showNewWindow() throws IOException {
-        stageUtil.showStage(Coor.height, Coor.width, "fxml/sample.fxml", "Your DigitalOcean", true);
+        stageUtil.showStage(723, 867, "fxml/sample.fxml", "Your DigitalOcean", true);
     }
 
 

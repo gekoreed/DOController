@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class StageUtil {
 
-    ClassLoader classLoader = this.getClass().getClassLoader();
+    private ClassLoader classLoader = this.getClass().getClassLoader();
 
     private static StageUtil stageUtil;
 
@@ -22,20 +22,20 @@ public class StageUtil {
         return stageUtil;
     }
 
-    public void showStage(int height, int width, String xmLname, String windowName) throws IOException {
-        showStage(height, width, xmLname, windowName, false);
+    public void showStage(int height, int width, String xmlName, String windowName) throws IOException {
+        showStage(height, width, xmlName, windowName, false);
     }
 
-    public void showStage(int height, int width, String xmLname, String windowName, boolean resizable) throws IOException {
+    public void showStage(int height, int width, String xmlName, String windowName, boolean resizable) throws IOException {
         Stage ps = new Stage();
         ps.setTitle(windowName);
-        ps.setScene(getScene(height, width, xmLname));
+        ps.setScene(getScene(height, width, xmlName));
         ps.setResizable(resizable);
         ps.show();
     }
 
 
-    private Scene getScene(int height, int width, String XMLname) throws IOException {
-        return new Scene(new FXMLLoader().load(classLoader.getResourceAsStream(XMLname)), width, height);
+    private Scene getScene(int height, int width, String xmlName) throws IOException {
+        return new Scene(new FXMLLoader().load(classLoader.getResourceAsStream(xmlName)), width, height);
     }
 }

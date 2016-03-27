@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class App extends Application {
 
-    StageUtil stageUtil = StageUtil.getInstance();
-    Stage ps;
+    private StageUtil stageUtil = StageUtil.getInstance();
+    private Stage ps;
 
     public static void main(String[] args) {
         launch(args);
@@ -56,7 +56,7 @@ public class App extends Application {
         return true;
     }
 
-    public static void closeApp(WindowEvent event) {
+    private static void closeApp(WindowEvent event) {
         javafx.application.Platform.exit();
         System.exit(0);
     }
